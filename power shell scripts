@@ -1,0 +1,16 @@
+To create resource group
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
+
+To create VM
+New-AzVm `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myVM" `
+    -Location "East US" `
+    -VirtualNetworkName "myVnet" `
+    -SubnetName "mySubnet" `
+    -SecurityGroupName "myNetworkSecurityGroup" `
+    -PublicIpAddressName "myPublicIpAddress" `
+    -OpenPorts 80,3389
+    
+To connect VM
+Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
